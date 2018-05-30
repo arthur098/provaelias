@@ -8,18 +8,27 @@ import interfaces.ValoresITF;
 
 public class Valores implements ValoresITF {
 
-	static List<Integer> valores = new ArrayList<>();
+	private List<Integer> valores = new ArrayList<>();
 
 	@Override
 	public boolean ins(int v) {
-		valores.add(v);
-		return true;
+		if (v > 0 && valores.size() < 10) {
+			valores.add(v);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public int del(int i) {
-		int valorRetorno = valores.get(i);
-		return valores.remove(valorRetorno);
+		Integer valorRemovido = i;
+		if (valores.size() > 0) {
+			valores.remove(valorRemovido);
+			return valorRemovido;
+		} else {
+			return -1;
+		}
 	}
 
 	@Override
@@ -30,21 +39,35 @@ public class Valores implements ValoresITF {
 	@Override
 	public double mean() {
 		double retorno = 0;
-		for(Integer valor : valores) {
+		for (Integer valor : valores) {
 			retorno += valor;
 		}
-		return retorno / valores.size();
+
+		if (valores.size() > 0) {
+			return retorno / valores.size();
+		} else {
+			return 0;
+		}
+
 	}
 
 	@Override
 	public int lower() {
-		Collections.sort(valores);
-		return valores.get(0);
+		if (valores.size() > 0) {
+			Collections.sort(valores);
+			return valores.get(0);
+		} else {
+			return -1;
+		}
 	}
 
 	@Override
 	public int greater() {
-		Collections.sort(valores);
-		return valores.get(valores.size() -1);
+		if (valores.size() > 0) {
+			Collections.sort(valores);
+			return valores.get(valores.size() - 1);
+		} else {
+			return -1;
+		}
 	}
 }
