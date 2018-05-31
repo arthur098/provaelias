@@ -23,7 +23,7 @@ public class Valores implements ValoresITF {
 	@Override
 	public int del(int i) {
 		Integer valorRemovido = i;
-		if (valores.size() > 0) {
+		if (valores.size() > 0 && valores.contains(valorRemovido)) {
 			valores.remove(valorRemovido);
 			return valorRemovido;
 		} else {
@@ -38,12 +38,11 @@ public class Valores implements ValoresITF {
 
 	@Override
 	public double mean() {
-		double retorno = 0;
-		for (Integer valor : valores) {
-			retorno += valor;
-		}
-
 		if (valores.size() > 0) {
+			double retorno = 0;
+			for (Integer valor : valores) {
+				retorno += valor;
+			}
 			return retorno / valores.size();
 		} else {
 			return 0;
