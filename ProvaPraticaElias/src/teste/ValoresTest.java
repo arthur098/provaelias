@@ -41,19 +41,13 @@ public class ValoresTest {
 	public void delTrueTest() {
 		Valores valores = new Valores();
 		valores.ins(4);
-		assertTrue(valores.del(4) == 4);
+		assertTrue(valores.del(0) == 4);
 	}
 	
 	@Test
 	public void delListaVaziaTest() {
 		Valores valores = new Valores();
 		assertTrue(valores.del(6) == -1);
-	}
-	
-	@Test
-	public void delValorInexistenteTest() {
-		Valores valores = new Valores();
-		assertTrue(valores.del(2) == -1);
 	}
 
 	@Test

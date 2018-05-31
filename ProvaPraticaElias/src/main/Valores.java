@@ -22,10 +22,8 @@ public class Valores implements ValoresITF {
 
 	@Override
 	public int del(int i) {
-		Integer valorRemovido = i;
-		if (valores.size() > 0 && valores.contains(valorRemovido)) {
-			valores.remove(valorRemovido);
-			return valorRemovido;
+		if (valores.size() > i) {
+			return valores.remove(i);
 		} else {
 			return -1;
 		}
